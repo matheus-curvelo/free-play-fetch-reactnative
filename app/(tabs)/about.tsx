@@ -5,7 +5,7 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {ThemedText} from "@/components/ThemedText";
 import {ThemedView} from "@/components/ThemedView";
 
-export default function HomeScreen() {
+export default function AboutScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{light: "#475569", dark: "#475569"}}
@@ -13,7 +13,7 @@ export default function HomeScreen() {
         <Ionicons size={310} name="code-slash" style={styles.headerImage} />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Home</ThemedText>
+        <ThemedText type="title">Sobre</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );

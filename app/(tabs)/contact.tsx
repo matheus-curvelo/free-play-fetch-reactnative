@@ -9,6 +9,7 @@ import {
   Image,
   Alert,
   useColorScheme,
+  Linking,
 } from "react-native";
 import emailjs from "emailjs-com";
 
@@ -20,6 +21,12 @@ import {ThemedView} from "@/components/ThemedView";
 
 export default function ContactScreen() {
   const colorScheme = useColorScheme() || "light";
+
+  const openLink = (url: string) => {
+    Linking.openURL(url).catch(err =>
+      console.error("Failed to open URL:", err)
+    );
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -141,7 +148,7 @@ export default function ContactScreen() {
         <Text style={styles(colorScheme).socialTitle}>Redes Sociais</Text>
         <View style={styles(colorScheme).socialLinks}>
           <TouchableOpacity
-            onPress={() => Alert.alert("GitHub", "Abrindo GitHub...")}
+            onPress={() => openLink("https://github.com/matheus-curvelo")}
             activeOpacity={0.8}>
             <Image
               source={require("../../assets/svgs/github.svg")}
@@ -150,7 +157,9 @@ export default function ContactScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => Alert.alert("LinkedIn", "Abrindo LinkedIn...")}
+            onPress={() =>
+              openLink("https://www.linkedin.com/in/matheus-curvelo/")
+            }
             activeOpacity={0.8}>
             <Image
               source={require("../../assets/svgs/linkedin.svg")}
@@ -210,6 +219,7 @@ const styles = (colorScheme: string) =>
     },
     socialContainer: {
       marginTop: 32,
+      marginBottom: 32,
     },
     socialTitle: {
       fontSize: 18,

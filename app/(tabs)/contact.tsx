@@ -19,6 +19,10 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {ThemedText} from "@/components/ThemedText";
 import {ThemedView} from "@/components/ThemedView";
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+
 export default function ContactScreen() {
   const colorScheme = useColorScheme() || "light";
 
@@ -149,22 +153,18 @@ export default function ContactScreen() {
         <View style={styles(colorScheme).socialLinks}>
           <TouchableOpacity
             onPress={() => openLink("https://github.com/matheus-curvelo")}
-            activeOpacity={0.8}>
-            <Image
-              source={require("../../assets/svgs/github.svg")}
-              style={styles(colorScheme).socialIcon}
-            />
+            activeOpacity={0.5}>
+
+              <FontAwesomeIcon icon={faGithub} size={40} style={styles(colorScheme).socialIcon}/>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() =>
               openLink("https://www.linkedin.com/in/matheus-curvelo/")
             }
-            activeOpacity={0.8}>
-            <Image
-              source={require("../../assets/svgs/linkedin.svg")}
-              style={styles(colorScheme).socialIcon}
-            />
+            activeOpacity={0.5}>
+
+              <FontAwesomeIcon icon={faLinkedin} size={40} style={styles(colorScheme).socialIcon}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -232,9 +232,9 @@ const styles = (colorScheme: string) =>
       gap: 16,
     },
     socialIcon: {
-      width: 40,
-      height: 40,
-      tintColor: colorScheme === "dark" ? "#FFFFFF" : "#000000",
+      marginTop: 10,
+      padding: 5,
+      color: colorScheme === "dark" ? "#FFFFFF" : "#000000",
     },
     headerImage: {
       color: "#ffffff",

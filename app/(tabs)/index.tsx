@@ -10,7 +10,7 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{light: "#475569", dark: "#475569"}}
       headerImage={
-        <Ionicons size={310} name="code-slash" style={styles.headerImage} />
+        <Ionicons size={310} name="game-controller-outline" style={styles.headerImage} />
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Home</ThemedText>

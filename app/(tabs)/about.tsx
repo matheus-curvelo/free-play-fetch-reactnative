@@ -10,7 +10,7 @@ export default function AboutScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{light: "#475569", dark: "#475569"}}
       headerImage={
-        <Ionicons size={310} name="code-slash" style={styles.headerImage} />
+        <Ionicons size={310} name="document-text-outline" style={styles.headerImage} />
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Sobre</ThemedText>

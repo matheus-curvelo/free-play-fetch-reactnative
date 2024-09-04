@@ -20,7 +20,7 @@ export default function TabLayout() {
           title: "Home",
           tabBarIcon: ({color, focused}) => (
             <TabBarIcon
-              name={focused ? "home" : "home-outline"}
+              name={focused ? "game-controller" : "game-controller-outline"}
               color={color}
             />
           ),

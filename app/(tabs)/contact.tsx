@@ -3,52 +3,31 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
-  Image,
-  Alert,
   useColorScheme,
   Linking,
 } from "react-native";
 import emailjs from "emailjs-com";
-
 import Ionicons from "@expo/vector-icons/Ionicons";
-
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {ThemedText} from "@/components/ThemedText";
 import {ThemedView} from "@/components/ThemedView";
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
 export default function ContactScreen() {
   const colorScheme = useColorScheme() || "light";
-
-  const openLink = (url: string) => {
-    Linking.openURL(url).catch(err =>
-      console.error("Failed to open URL:", err)
-    );
-  };
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({name: "", email: "", message: ""});
   const [isSending, setIsSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: string, value: string) =>
     setFormData({...formData, [name]: value});
-  };
 
   const handleSubmit = () => {
     setIsSending(true);
-    setSuccessMessage("");
-    setErrorMessage("");
+    setStatusMessage("");
 
     emailjs
       .send(
@@ -62,16 +41,20 @@ export default function ContactScreen() {
         "sKYtOpqTDPPSVEDH0"
       )
       .then(
-        (result: any) => {
+        () => {
           setIsSending(false);
-          setSuccessMessage("Mensagem enviada com sucesso!");
+          setStatusMessage("Mensagem enviada com sucesso!");
           setFormData({name: "", email: "", message: ""});
         },
-        (error: any) => {
+        () => {
           setIsSending(false);
-          setErrorMessage("Erro ao enviar mensagem.");
+          setStatusMessage("Erro ao enviar mensagem.");
         }
       );
+  };
+
+  const openLink = (url: string) => {
+    Linking.openURL(url).catch(console.error);
   };
 
   return (
@@ -80,7 +63,7 @@ export default function ContactScreen() {
       headerImage={
         <Ionicons
           size={310}
-          name="code-slash"
+          name="mail-outline"
           style={styles(colorScheme).headerImage}
         />
       }>
@@ -141,11 +124,15 @@ export default function ContactScreen() {
         </Text>
       </TouchableOpacity>
 
-      {successMessage ? (
-        <Text style={styles(colorScheme).successMessage}>{successMessage}</Text>
-      ) : null}
-      {errorMessage ? (
-        <Text style={styles(colorScheme).errorMessage}>{errorMessage}</Text>
+      {statusMessage ? (
+        <Text
+          style={
+            statusMessage.includes("sucesso")
+              ? styles(colorScheme).successMessage
+              : styles(colorScheme).errorMessage
+          }>
+          {statusMessage}
+        </Text>
       ) : null}
 
       <View style={styles(colorScheme).socialContainer}>
@@ -154,17 +141,22 @@ export default function ContactScreen() {
           <TouchableOpacity
             onPress={() => openLink("https://github.com/matheus-curvelo")}
             activeOpacity={0.5}>
-
-              <FontAwesomeIcon icon={faGithub} size={40} style={styles(colorScheme).socialIcon}/>
+            <FontAwesomeIcon
+              icon={faGithub}
+              size={40}
+              style={styles(colorScheme).socialIcon}
+            />
           </TouchableOpacity>
-
           <TouchableOpacity
             onPress={() =>
               openLink("https://www.linkedin.com/in/matheus-curvelo/")
             }
             activeOpacity={0.5}>
-
-              <FontAwesomeIcon icon={faLinkedin} size={40} style={styles(colorScheme).socialIcon}/>
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              size={40}
+              style={styles(colorScheme).socialIcon}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -179,11 +171,9 @@ const styles = (colorScheme: string) =>
       padding: 16,
       backgroundColor: colorScheme === "dark" ? "#1E1E1E" : "#F0F0F0",
     },
-    title: {
-      fontSize: 24,
-      fontWeight: "bold",
-      marginBottom: 16,
-      color: colorScheme === "dark" ? "#FFFFFF" : "#000000",
+    titleContainer: {
+      flexDirection: "row",
+      gap: 8,
     },
     description: {
       fontSize: 16,
@@ -208,6 +198,22 @@ const styles = (colorScheme: string) =>
     },
     textArea: {
       height: 100,
+    },
+    button: {
+      backgroundColor: "#007bff",
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 5,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    buttonDisabled: {
+      backgroundColor: "#aaa",
+    },
+    buttonText: {
+      color: "#fff",
+      fontSize: 16,
+      fontWeight: "bold",
     },
     successMessage: {
       marginTop: 16,
@@ -241,26 +247,5 @@ const styles = (colorScheme: string) =>
       bottom: -90,
       left: -35,
       position: "absolute",
-    },
-    titleContainer: {
-      flexDirection: "row",
-      gap: 8,
-    },
-
-    button: {
-      backgroundColor: "#007bff",
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 5,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    buttonDisabled: {
-      backgroundColor: "#aaa",
-    },
-    buttonText: {
-      color: "#fff",
-      fontSize: 16,
-      fontWeight: "bold",
     },
   });

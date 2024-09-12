@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+# Free Play Fetch React Native
+Este projeto é uma aplicação mobile em React NAtive para exibir jogos gratuitos e suas DLC's do projeto Free Play Fetch. Ele utiliza a API para buscar dados e apresenta essas informações em uma interface de usuário amigável.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Como usar
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Clonando o repositório
+Você pode clonar este repositório com o seguinte comando:
 
 ```bash
-npm run reset-project
+git clone https://github.com/matheus-curvelo/free-play-fetch-reactnative.git
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Instalando dependências
+Após clonar o repositório, navegue até o diretório do projeto.
 
-## Learn more
+```bash
+cd free-play-fetch-reactnative
 
-To learn more about developing your project with Expo, look at the following resources:
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Agora instale as dependências:
 
-## Join the community
+```bash
+npm install
 
-Join our community of developers creating universal apps.
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Rodando o projeto
+Para rodar o projeto, execute o seguinte comando:
+
+```bash
+npx expo start
+
+```
+
+Isso iniciará o servidor de desenvolvimento. Utilize o QR Code para abrir o projeto no aplicativo Expo.
+
+## Dependências
+
+Este boilerplate já vem com as seguintes dependências instaladas:
+
+**React Native** <br/>
+**Expo** <br/>
+**EmailJS** <br/>
+**FortAwesome**
+
+## Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para propor melhorias através de issues ou pull requests.
+
+## Licença
+Este projeto está licenciado sob a MIT License.
